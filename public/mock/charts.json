@@ -1,0 +1,50 @@
+{
+    "conversion_attribution": [
+      { "channel": "Organic Search", "organic": 1200, "paid": 300, "referral": 200 },
+      { "channel": "Social", "organic": 800, "paid": 450, "referral": 150 },
+      { "channel": "Email", "organic": 600, "paid": 120, "referral": 40 },
+      { "channel": "Organic Search", "organic": 1500, "paid": 400, "referral": 100 },
+      { "channel": "Social", "organic": 500, "paid": 450, "referral": 250 },
+      { "channel": "Email", "organic": 600, "paid": 120, "referral": 40 }
+    ],
+    "funnel": [
+      { "stage": "Impressions", "value": 100000 },
+      { "stage": "Visits", "value": 30000 },
+      { "stage": "Leads", "value": 8000 }
+     
+    ],
+    "visits_by_topic": [
+      { "topic": "Product", "value": 54000 },
+      { "topic": "Docs", "value": 32000 },
+      { "topic": "Blog", "value": 18600 },
+      { "topic": "media", "value": 18600 }
+    ],
+    "downloads_by_type": [
+      { "label": "Whitepaper", "value": 6000 },
+      { "label": "Datasheet", "value": 3500 },
+      { "label": "Case Study", "value": 2500 }
+    ],
+    "social": {
+      "date": ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      "likes": [120, 150, 2220, 200, 6720, 260, 300],
+      "shares": [30, 40, 3300, 60, 70, 5500, 90],
+      "impressions": [5000, 5200, 4800, 6100, 7000, 8000, 9200]
+    },
+    "table_rows": [
+      { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 },
+      { "campaign": "Spring Launch", "spend": 9000, "conv": 210, "roi": 1.9 },
+      { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 },
+      { "campaign": "Spring Launch", "spend": 9000, "conv": 210, "roi": 1.9 },
+      { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 },
+      { "campaign": "Spring Launch", "spend": 9000, "conv": 210, "roi": 1.9 },
+      { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 },
+      { "campaign": "Spring Launch", "spend": 9000, "conv": 210, "roi": 1.9 },
+      { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 }
+    ],
+    "channel_performance": [
+      { "channelName": "Facebook", "impressions": 15000, "clicks": 1200, "conversions": 80, "cpa": "$150" },
+      { "channelName": "YouTube", "impressions": 13000, "clicks": 1000, "conversions": 60, "cpa": "$170" },
+      { "channelName": "LinkedIn", "impressions": 8000, "clicks": 600, "conversions": 50, "cpa": "$180" }
+    ]
+  }
+  

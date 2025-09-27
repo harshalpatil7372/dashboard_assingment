@@ -1,0 +1,70 @@
+{
+  "metrics": [
+    {
+      "id": "visits",
+      "label": "Total Visits",
+      "value": "124,587",
+      "delta": 4.5,
+      "trend": "positive",
+      "progressValue": 75,
+      "progressColor": "green",
+      "benchmark": 100000,
+      "target": 150000
+    },
+    {
+      "id": "page_views",
+      "label": "Page Views",
+      "value": "4,580",
+      "delta": 1.2,
+      "trend": "positive",
+      "progressValue": 60,
+      "progressColor": "orange",
+      "benchmark": 4000,
+      "target": 6000
+    },
+    {
+      "id": "vrm",
+      "label": "VRT",
+      "value": "3,600",
+      "delta": -0.6,
+      "trend": "negative",
+      "progressValue": 40,
+      "progressColor": "red",
+      "benchmark": 5000,
+      "target": 7000
+    },
+    {
+      "id": "revenue",
+      "label": "Revenue",
+      "value": "$1,200",
+      "delta": 3.7,
+      "trend": "positive",
+      "progressValue": 80,
+      "progressColor": "green",
+      "benchmark": 1000,
+      "target": 2000
+    },
+    {
+      "id": "conversion",
+      "label": "Conversion Rate",
+      "value": "12.5%",
+      "delta": 2.1,
+      "trend": "positive",
+      "progressValue": 68,
+      "progressColor": "purple",
+      "benchmark": 10,
+      "target": 20
+    },
+    {
+      "id": "engagement",
+      "label": "User Engagement",
+      "value": "78%",
+      "delta": -1.4,
+      "trend": "neutral",
+      "progressValue": 55,
+      "progressColor": "orange",
+      "benchmark": 80,
+      "target": 90
+    }
+  ]
+}
