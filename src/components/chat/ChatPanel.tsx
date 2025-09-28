@@ -45,7 +45,7 @@ export const ChatPanel: React.FC = () => {
   const callGeminiAPI = async (userQuery: string): Promise<string> => {
     try {
       // Replace with your actual Gemini API key
-      const API_KEY = 'AIzaSyBtRTFod3ynG9DVZBlwlJSC-kb5-odL_NE';
+      const API_KEY = 'api-key-here';
       
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`, {
         method: 'POST',
