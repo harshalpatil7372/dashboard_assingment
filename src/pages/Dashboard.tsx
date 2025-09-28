@@ -22,7 +22,7 @@ export const Dashboard: React.FC = () => {
   const metrics = metricsHook.data.metrics;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-3 md:p-6">
       <TopNav />
       <br />
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
@@ -48,25 +48,28 @@ export const Dashboard: React.FC = () => {
           ))}
         </div>
 
-        <div className="hidden lg:block">
-          <ChatPanel />
+        <div className="w-full">
+          <div className="h-full min-h-[400px] lg:min-h-[500px]">
+            <ChatPanel />
+          </div>
         </div>
       </div>
+
       <SummaryCard
-  title="Performance Summary"
-  insights={[
-    "Revenue increased by 15% compared to last quarter",
-    "Social media engagement is up 34% month-over-month"
-  ]}
-/>
-<br/>
+        title="Performance Summary"
+        insights={[
+          "Revenue increased by 15% compared to last quarter",
+          "Social media engagement is up 34% month-over-month"
+        ]}
+      />
+      <br/>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 space-y-4">
           <ChartCard
             title="Conversion Attribution"
             filters={
-              <>
+              <div className="flex flex-wrap gap-2">
                 <select className="border rounded-lg text-sm px-2 py-1">
                   <option>All Campaigns</option>
                   <option>Campaign A</option>
@@ -77,7 +80,7 @@ export const Dashboard: React.FC = () => {
                   <option>Clicks</option>
                   <option>Revenue</option>
                 </select>
-              </>
+              </div>
             }
             action={
               <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
@@ -88,53 +91,67 @@ export const Dashboard: React.FC = () => {
             <StackedBarConversion data={data.conversion_attribution} />
           </ChartCard>
 
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ChartCard title="Funnel - Marketing Contribution" action={
-              <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
-                View Summary
-              </button>
-            }>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ChartCard 
+              title="Funnel - Marketing Contribution" 
+              action={
+                <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
+                  View Summary
+                </button>
+              }
+            >
               <FunnelChart data={data.funnel} />
             </ChartCard>
 
-            <ChartCard title="Visits by Topic" action={
-              <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
-                View Summary
-              </button>
-            }>
+            <ChartCard 
+              title="Visits by Topic" 
+              action={
+                <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
+                  View Summary
+                </button>
+              }
+            >
               <DonutChart data={data.visits_by_topic} />
             </ChartCard>
           </div>
 
-          <div className="mt-4">
-            <ChartCard title="Social Media" action={
+          <ChartCard 
+            title="Social Media" 
+            action={
               <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
                 View Summary
               </button>
-            }>
-              <LineBarSocial data={data.social} />
-            </ChartCard>
-          </div>
+            }
+          >
+            <LineBarSocial data={data.social} />
+          </ChartCard>
         </div>
 
-        <div>
-          <div className="space-y-4">
-            <ChartCard title="Visits by Popular Persona" action={
+        {/* Right Column - Side Charts and Table */}
+        <div className="space-y-4">
+          <ChartCard 
+            title="Visits by Popular Persona" 
+            action={
               <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
                 View Summary
               </button>
-            }>
-              <DonutChart data={data.visits_by_topic} />
-            </ChartCard>
-            <ChartCard title="Downloads by Type" action={
+            }
+          >
+            <DonutChart data={data.visits_by_topic} />
+          </ChartCard>
+          
+          <ChartCard 
+            title="Downloads by Type" 
+            action={
               <button className="px-3 py-1 text-sm border rounded-lg text-indigo-600 border-indigo-300 hover:bg-indigo-50">
                 View Summary
               </button>
-            }>
-              <DonutChart data={data.downloads_by_type} />
-            </ChartCard>
-            <TableCard rows={data.table_rows} />
-          </div>
+            }
+          >
+            <DonutChart data={data.downloads_by_type} />
+          </ChartCard>
+          
+          <TableCard rows={data.table_rows} />
         </div>
       </div>
 

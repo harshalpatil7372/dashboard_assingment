@@ -38,13 +38,12 @@
       { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 },
       { "campaign": "Spring Launch", "spend": 9000, "conv": 210, "roi": 1.9 },
       { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 },
-      { "campaign": "Spring Launch", "spend": 9000, "conv": 210, "roi": 1.9 },
       { "campaign": "Autumn Promo", "spend": 12000, "conv": 320, "roi": 2.5 }
     ],
     "channel_performance": [
-      { "channelName": "Facebook", "impressions": 15000, "clicks": 1200, "conversions": 80, "cpa": "$150" },
-      { "channelName": "YouTube", "impressions": 13000, "clicks": 1000, "conversions": 60, "cpa": "$170" },
-      { "channelName": "LinkedIn", "impressions": 8000, "clicks": 600, "conversions": 50, "cpa": "$180" }
+      { "channelName": "Facebook", "impressions": 15000, "clicks": 1200, "conversions": 80, "cpa": "150" },
+      { "channelName": "YouTube", "impressions": 13000, "clicks": 1000, "conversions": 60, "cpa": "170" },
+      { "channelName": "LinkedIn", "impressions": 8000, "clicks": 600, "conversions": 50, "cpa": "180" }
     ]
   }
   

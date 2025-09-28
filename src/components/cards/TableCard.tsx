@@ -1,6 +1,16 @@
 import React from "react";
 
-export const TableCard: React.FC<{ rows: any[]; title?: string }> = ({ rows, title }) => {
+export const TableCard: React.FC<{ 
+  rows: any[]; 
+  title?: string; 
+  showTotal?: boolean;
+  totalLabel?: string;
+}> = ({ 
+  rows, 
+  title, 
+  showTotal = true,
+  totalLabel = "Total"
+}) => {
   if (!rows || rows.length === 0) {
     return (
       <div className="bg-white rounded-lg border border-gray-200 p-6">
@@ -17,6 +27,32 @@ export const TableCard: React.FC<{ rows: any[]; title?: string }> = ({ rows, tit
 
   const keys = Object.keys(rows[0]);
   
+  // Helper function to check if a value is numeric
+  const isNumeric = (value: any) => {
+    return !isNaN(parseFloat(value)) && isFinite(value);
+  };
+
+  const calculateTotals = () => {
+    const totals: any = {};
+    
+    keys.forEach(key => {
+      const values = rows.map(row => row[key]);
+      const numericValues = values.filter(isNumeric);
+      
+      if (numericValues.length > 0 && numericValues.length === values.length) {
+        totals[key] = numericValues.reduce((sum, val) => sum + parseFloat(val), 0);
+      } else if (key === keys[0]) {
+        totals[key] = totalLabel;
+      } else {
+        totals[key] = '—';
+      }
+    });
+    
+    return totals;
+  };
+
+  const totals = showTotal ? calculateTotals() : null;
+
   const formatHeader = (key: string) => {
     return key
       .replace(/([A-Z])/g, ' $1')
@@ -24,9 +60,15 @@ export const TableCard: React.FC<{ rows: any[]; title?: string }> = ({ rows, tit
       .trim();
   };
 
-  const formatCellValue = (value: any) => {
+  const formatCellValue = (value: any, isTotal: boolean = false) => {
     if (typeof value === 'number') {
       return value.toLocaleString();
+    }
+    if (isTotal && typeof value === 'string' && value !== totalLabel && value !== '—') {
+      const numValue = parseFloat(value);
+      if (!isNaN(numValue)) {
+        return numValue.toLocaleString();
+      }
     }
     return String(value);
   };
@@ -38,6 +80,7 @@ export const TableCard: React.FC<{ rows: any[]; title?: string }> = ({ rows, tit
           <h3 className="text-lg font-medium text-gray-900">{title}</h3>
         </div>
       )}
+      
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
@@ -68,6 +111,19 @@ export const TableCard: React.FC<{ rows: any[]; title?: string }> = ({ rows, tit
                 ))}
               </tr>
             ))}
+            
+            {showTotal && totals && (
+              <tr className="bg-gray-50 border-t-2 border-gray-300 font-medium">
+                {keys.map((k) => (
+                  <td 
+                    key={k} 
+                    className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold"
+                  >
+                    {formatCellValue(totals[k], true)}
+                  </td>
+                ))}
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -75,6 +131,7 @@ export const TableCard: React.FC<{ rows: any[]; title?: string }> = ({ rows, tit
       <div className="px-6 py-3 bg-gray-50 border-t border-gray-200">
         <div className="text-sm text-gray-500">
           Showing {rows.length} {rows.length === 1 ? 'entry' : 'entries'}
+          {showTotal && ' plus totals'}
         </div>
       </div>
     </div>
