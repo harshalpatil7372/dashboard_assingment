@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFetchMock } from "../hooks/useFetchMock";
 import { MetricCard } from "../components/cards/MetricCard";
 import { ChartCard } from "../components/cards/ChartCard";
@@ -14,6 +14,7 @@ import { SummaryCard } from "../components/SummaryCard";
 export const Dashboard: React.FC = () => {
   const { data, loading, error } = useFetchMock("/mock/charts.json");
   const metricsHook = useFetchMock("/mock/metrics.json");
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   if (loading || metricsHook.loading) return <div className="p-8">Loading...</div>;
   if (error || metricsHook.error) return <div className="p-8">Error: {error ?? metricsHook.error}</div>;
@@ -25,7 +26,7 @@ export const Dashboard: React.FC = () => {
     <div className="min-h-screen bg-gray-50 p-3 md:p-6">
       <TopNav />
       <br />
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
         <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4">
           {metrics.map((m) => (
             <MetricCard
@@ -47,12 +48,18 @@ export const Dashboard: React.FC = () => {
             />
           ))}
         </div>
+      <button
+        onClick={() => setIsChatOpen(true)}
+        className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition"
+      >
+        💬
+      </button>
 
-        <div className="w-full">
-          <div className="h-full min-h-[400px] lg:min-h-[500px]">
-            <ChatPanel />
-          </div>
+      {isChatOpen && (
+        <div className="fixed bottom-20 right-6 w-[90%] sm:w-[400px] max-h-[80vh] z-50">
+          <ChatPanel onClose={() => setIsChatOpen(false)} />
         </div>
+      )}
       </div>
 
       <SummaryCard

@@ -10,7 +10,11 @@ interface Message {
   isLoading?: boolean;
 }
 
-export const ChatPanel: React.FC = () => {
+interface ChatPanelProps {
+  onClose?: () => void;
+}
+ 
+export const ChatPanel:React.FC<ChatPanelProps> = ({ onClose }) => {
   const [query, setQuery] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -146,7 +150,16 @@ export const ChatPanel: React.FC = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zM12 13a1 1 0 110-2 1 1 0 010 2zM12 20a1 1 0 110-2 1 1 0 010 2z" />
           </svg>
         </button>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="p-1 hover:bg-blue-500 rounded-full"
+          >
+            ✖
+          </button>
+        )}
       </div>
+      
 
       <div className="h-64 sm:h-80 md:h-96 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
         {messages.map((message) => (
